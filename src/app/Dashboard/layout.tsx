@@ -10,11 +10,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     useEffect(() => {
         const originUrl = window.location.origin
         function VerifySession() {
-            // if (session === null) {
-            //     window.location.replace('/')
-            // }
+            if (session === null) {
+                window.location.replace('/')
+            }
         }
-        const result = axios.get(`${originUrl}/api/database/teste`)
+        // const result = axios.get(`${originUrl}/api/database/teste`)
         VerifySession()
     }, [session])
 
