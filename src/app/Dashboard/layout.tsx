@@ -14,8 +14,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                 window.location.replace('/')
             }
         }
-        // const result = axios.get(`${originUrl}/api/database/teste`)
         VerifySession()
+
+        const result = axios.get(`${originUrl}/api/(controllers)/user/get`)
     }, [session])
 
     return (
