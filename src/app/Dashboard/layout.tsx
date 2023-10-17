@@ -25,6 +25,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     async function GetDataUser() {
         if (session && userContext.repositorys.length === 0) {
             const { data } = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/api/users/${session?.user.id}`)
+
             if (data.status != 200) {
                 const response = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/api/users`, {
                     id: session?.user.id,
@@ -37,8 +38,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             const repositorys = await getRepositories(session?.user.token)
 
             setUserContext({
-                id: session?.user.id,
-                name: session?.user.name,
+                id: data?.id,
+                username: session?.user.name,
                 email: session?.user.email,
                 avatar: session?.user.image,
                 token: session?.user.token,

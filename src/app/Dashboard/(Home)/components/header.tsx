@@ -25,7 +25,7 @@ function Header() {
                     </div>
 
                     <p className='text-[22px] max-sm:text-[20px] max-lsm:text-[18px] max-w-[400px] max-lg:max-w-[300px] max-sm:max-w-[200px] max-lsm:max-w-[150px] overflow-hidden text-ellipsis whitespace-nowrap'>
-                        {userContext.name}
+                        {userContext.username}
                     </p>
                 </div>
 

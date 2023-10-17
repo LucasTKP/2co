@@ -1,17 +1,15 @@
 'use client'
 import axios from "axios"
-import { Dispatch, SetStateAction, createContext, useContext, useEffect, useState } from "react"
+import { useEffect, useState } from "react"
 import NavBar from "./components/NavBar"
 import { Project } from "@/types/project"
+import { ProjectContext } from "./context/projectContext"
+import { ExecuterContext } from "./context/executerContext"
 
-export const ProjectContext = createContext<{ projectContext: Project | null, setProjectContext: Dispatch<SetStateAction<Project | null>> }>({
-    projectContext:null,
-    setProjectContext:() => (null),
-});
 
 export default function RootLayout({ children, params }: { children: React.ReactNode, params: { id_project: string } }) {
-
     const [projectContext, setProjectContext] = useState<Project | null>(null)
+    const [idExecuterTask, setIdExecuterTask] = useState<string | undefined>(undefined)
 
     useEffect(() => {
         GetProject()
@@ -23,13 +21,17 @@ export default function RootLayout({ children, params }: { children: React.React
         setProjectContext(data)
     }
 
+
+
     if (projectContext) {
         return (
             <ProjectContext.Provider value={{ projectContext, setProjectContext }}>
-                <section className="flex items-start">
-                    <NavBar />
-                    {children}
-                </section>
+                <ExecuterContext.Provider value={{idExecuterTask, setIdExecuterTask}}>
+                    <section className="flex items-start">
+                        <NavBar />
+                        {children}
+                    </section>
+                </ExecuterContext.Provider>
             </ProjectContext.Provider>
         )
     } else {

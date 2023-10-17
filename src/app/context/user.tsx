@@ -5,7 +5,7 @@ import { DataUser } from '../../../types/user';
 export const dataUserContext = createContext<{ userContext: DataUser, setUserContext: Dispatch<SetStateAction<DataUser>> }>({
     userContext: {
         id: '',
-        name: '',
+        username: '',
         email: '',
         avatar:'',
         token: '',
@@ -18,7 +18,7 @@ export const dataUserContext = createContext<{ userContext: DataUser, setUserCon
 export default function User({ children }: { children: React.ReactNode }) {
     const [userContext, setUserContext] = useState<DataUser>({
         id: '',
-        name: '',
+        username: '',
         email: '',
         avatar: '',
         token: '',

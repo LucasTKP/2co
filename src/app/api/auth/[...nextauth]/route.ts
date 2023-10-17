@@ -2,7 +2,7 @@ import NextAuth from "next-auth"
 import GitHubProvider from "next-auth/providers/github";
 
 
-export const handler = NextAuth({
+const handler = NextAuth({
 
   providers: [
     GitHubProvider({
