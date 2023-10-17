@@ -7,11 +7,10 @@ import { useEffect } from 'react'
 
 export default function Home() {
   const { data: session } = useSession()
-  const originUrl =
 
     useEffect(() => {
       function VerifySession() {
-        console.log(session)
+
         if (session != null) {
           window.location.replace('/Dashboard')
         }
