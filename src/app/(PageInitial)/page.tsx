@@ -21,7 +21,7 @@ export default function Home() {
 
   return (
     <main className="flex flex-col items-center">
-      <Image src={'/icons/Logo2Co.svg'} width={80} height={80} alt='' className='mt-[50px]' />
+      <Image src={'/icons/logo2Co.svg'} width={80} height={80} alt='' className='mt-[50px]' />
       <div className='mt-[50px] bg-[#2D2D2D] px-[50px] pb-[50px] rounded-[12px] flex flex-col items-center border-[#5F5F5F] border drop-shadow-[4px_4px_6px_rgba(0,0,0,0.25)]'>
 
         <Image src={'/images/logoSignIn.png'} alt={''} width={363} height={351}/>
