@@ -20,7 +20,7 @@ function Modalrepositories() {
             const response2 = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/api/projects`, {
                 id: repository.id,
                 name: repository.name,
-                idCowokers: [encryptId(userContext.id)]
+                idCowokers: [userContext.id]
             })
         } else {
             await UpdateProject(repository.id, result.idCowokers)
@@ -49,7 +49,7 @@ function Modalrepositories() {
     }
 
     async function UpdateProject(idRepository: string, idCoworkers: []) {
-        const idCowokers = [...idCoworkers, encryptId(userContext.id)]
+        const idCowokers = [...idCoworkers, userContext.id]
 
         const response = await axios.put(`${process.env.NEXT_PUBLIC_API_URL}/api/projects/${idRepository}`, {
             idCowokers
