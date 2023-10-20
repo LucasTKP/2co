@@ -46,7 +46,7 @@ function ModalCreateTask({ modalCreateTask, setModalCreateTask }: Props) {
                     <Dialog.Overlay className="bg-black/70 data-[state=open]:animate-overlayShow fixed inset-0 z-10" />
                     <Dialog.Content className="z-20 data-[state=open]:animate-contentShow fixed top-[50%] left-[50%] max-h-[85vh] w-[90vw] max-w-[450px] translate-x-[-50%] translate-y-[-50%] rounded-[6px] bg-[#282828] py-[20px] shadow-[hsl(206_22%_7%_/_35%)_0px_10px_38px_-10px,_hsl(206_22%_7%_/_20%)_0px_10px_20px_-15px] focus:outline-none">
                         <Dialog.Title className="text-[18px] font-semibold flex items-center gap-x-[10px] px-[20px]">
-                            <p className='text-emerald-500 truncate'>FlashGospel</p>
+                            <p className='text-emerald-500 truncate'>{projectContext?.title}</p>
                             <Image src='/icons/chevronRight.svg' alt='' width={0} height={0} className='w-[7px]' />
                             <p className='text-[#c6c6c6] whitespace-nowrap'>Nova Tarefa</p>
                         </Dialog.Title>
