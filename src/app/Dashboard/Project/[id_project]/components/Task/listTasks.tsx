@@ -45,6 +45,10 @@ function ListTasks({ optionConclued, setTaskSelected, setModalSeeTask }: Props) 
             <div className='mt-[25px] flex flex-col gap-y-[20px]'>
                 {projectContext?.tasks
                     .filter(task => idExecuterTask ? task.idExecuter === idExecuterTask : true)
+                    .filter(task => optionConclued ? task.status === "concluded" : task.status === "open").length ?
+                
+                projectContext?.tasks
+                    .filter(task => idExecuterTask ? task.idExecuter === idExecuterTask : true)
                     .filter(task => optionConclued ? task.status === "concluded" : task.status === "open")
                     .map((task) => {
                         return (
@@ -60,7 +64,10 @@ function ListTasks({ optionConclued, setTaskSelected, setModalSeeTask }: Props) 
                                 <Image onClick={() => handleDeleteTask(task)} src='/icons/trash.svg' alt='' width={0} height={0} className='cursor-pointer w-[20px] h-auto ml-auto' />
                             </div>
                         )
-                    })}
+                    })
+                    : 
+                    <p className='text-center text-[24px]'>Nenhuma tarefa foi encontrada <br />crie uma agora!</p>
+                }
 
             </div>
         </section>

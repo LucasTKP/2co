@@ -18,7 +18,7 @@ function Page() {
     <section className='mt-[50px] w-full flex flex-col items-center'>
       <ModalCreateTask modalCreateTask={modalCreateTask} setModalCreateTask={setModalCreateTask}/>
       <ModalSeeTask modalSeeTask={modalSeeTask} setModalSeeTask={setModalSeeTask} taskSelected={taskSelected} />
-      <div className='w-[90%]'>
+      <div className='w-[90%] max-sm:w-[95%]'>
         <div className='w-full'>
           <div className='flex items-center font-bold'>
             <p onClick={() => setOptionConclued(false)} className={`${optionConclued ? 'text-[#4E4E4E]' : ''} hover:opacity-70 duration-100 cursor-pointer ml-[20px]`}>Tarefas</p>

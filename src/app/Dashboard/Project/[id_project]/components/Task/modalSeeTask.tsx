@@ -38,8 +38,8 @@ function ModalSeeTask({taskSelected, modalSeeTask, setModalSeeTask }: Props) {
                         </div>
 
 
-                        <Dialog.Close asChild>
-                            <button className="text-violet11 hover:bg-violet4 focus:shadow-violet7 absolute top-[10px] right-[10px] inline-flex h-[25px] w-[25px] appearance-none items-center justify-center rounded-full focus:shadow-[0_0_0_2px] focus:outline-none" aria-label="Close">
+                        <Dialog.Close asChild >
+                            <button autoFocus={false} className="text-violet11 hover:bg-violet4 focus:shadow-violet7 absolute top-[10px] right-[10px] inline-flex h-[25px] w-[25px] appearance-none items-center justify-center rounded-full focus:shadow-[0_0_0_2px] focus:outline-none" aria-label="Close">
                                 <Cross2Icon className='w-full h-full text-[#7F7F7F]' />
                             </button>
                         </Dialog.Close>

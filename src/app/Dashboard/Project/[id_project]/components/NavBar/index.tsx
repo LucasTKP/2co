@@ -1,4 +1,4 @@
-import React, { Dispatch, SetStateAction, use, useContext, useState } from 'react'
+import React, { Dispatch, SetStateAction, use, useContext, useEffect, useState } from 'react'
 import Image from 'next/image'
 import { dataUserContext } from '@/src/app/context/user'
 import Link from 'next/link'
@@ -8,15 +8,22 @@ import { ProjectContext } from '../../context/projectContext'
 
 function Index() {
     const {idExecuterTask, setIdExecuterTask} = useContext(ExecuterContext)
-    const [navBar, setNavBar] = useState<Boolean>(true)
+    const [navBar, setNavBar] = useState<Boolean>(window.innerWidth < 1025 ? false : true)
     const { projectContext } = useContext(ProjectContext)
     const { userContext } = useContext(dataUserContext)
     const [menuCowokers, setMenuCowokers] = useState<Boolean>(true)
 
+    useEffect(() => {
+        if(window.innerWidth < 1025){
+            setNavBar(false)
+        }
+
+    },[idExecuterTask])
+
 
     return (
-        <section className={`${navBar ? 'w-[400px] text-gray-300' : 'w-[35px]'} duration-300`}>
-            <div className={`${navBar ? 'p-[20px] border-r-[3px] border-r-[#4A4A4A] w-[400px]' : 'w-[0px]'} duration-300  h-screen flex flex-col`}>
+        <section className={`max-lg:fixed ${navBar ? 'w-[400px] max-lg:w-full bg-[#282828] text-gray-300' : 'w-[35px]'} duration-300`}>
+            <div className={`${navBar ? 'p-[20px] lg:border-r-[3px] border-r-[#4A4A4A] w-[400px] max-lg:w-full' : 'w-[0px]'} duration-300  h-screen flex flex-col`}>
                 <Image src={'/icons/twoArrows.svg'} width={20} height={17} alt='' onClick={() => { setNavBar(!navBar), setMenuCowokers(!navBar) }} className={`cursor-pointer flex items-center duration-300 ${navBar ? 'self-end' : 'rotate-180 absolute mt-[20px] ml-[10px]'}`} />
 
                 <p className='text-[22px] text-emerald-500 truncate mt-[15px]'>{projectContext?.name}</p>
@@ -51,9 +58,9 @@ function Index() {
 
                     <div>
                         <div onClick={() => setMenuCowokers(!menuCowokers)} className={`flex items-center gap-x-[30px] text-[18px]`}>
-                            <Image src={'/icons/twoHand.svg'} width={0} height={0} alt='' style={{ width: 'auto', height: 24 }} className='hover:opacity-70 cursor-pointer duration-100' />
+                            <Image src={'/icons/twoHand.svg'} width={0} height={24} alt='' className='w-auto h-[24px] hover:opacity-70 cursor-pointer duration-100' />
                             <p className='hover:opacity-70 cursor-pointer duration-100 truncate'>Equipe</p>
-                            <Image src={'/icons/arrowBottom.svg'} width={0} height={0} alt='' style={{ width: 'auto', height: 8 }} className={`${navBar ? 'ml-auto hover:opacity-70 cursor-pointer duration-100' : 'hidden'} ${menuCowokers ? '' : 'rotate-180 duration-100'}`} />
+                            <Image src={'/icons/arrowBottom.svg'} width={0} height={8} alt='' className={`w-auto h-[8px] ${navBar ? 'ml-auto hover:opacity-70 cursor-pointer duration-100' : 'hidden'} ${menuCowokers ? '' : 'rotate-180 duration-100'}`} />
                         </div>
 
                         <div className={`duration-200 relative w-full flex flex-col gap-y-[5px] mt-[15px] ${menuCowokers ? 'h-[100%]' : 'h-[0%]'}`}>
@@ -69,13 +76,13 @@ function Index() {
                                 )
                             })}
 
-                            <div className={`w-[3px] h-[90%] bg-[#4E4E4E] rounded-full ml-[14px] ${navBar ? 'absolute' : ''}`} />
+                            <div className={`w-[3px] h-[90%] bg-[#4E4E4E] rounded-full ml-[14px] ${navBar ? 'absolute' : 'w-full max-w-[0px]'}`} />
                         </div>
                     </div>
                 </div>
 
                 <Link href='/Dashboard' className='cursor-pointer hover:opacity-70 duration-100 mt-auto flex items-center'>
-                    <Image src={'/icons/arrowLeft.svg'} width={0} height={0} alt='' style={{ width: 'auto', height:  19}} />
+                    <Image src={'/icons/arrowLeft.svg'} width={0} height={19} alt='' className='w-auto h-[19px]' />
                     <p className='ml-[15px] truncate text-[20px]'>Projetos</p>
                 </Link>
             </div>
