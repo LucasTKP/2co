@@ -12,7 +12,7 @@ const months = [
   'Novembro',
   'Dezembro',
 ];
-export function FormatDate(date: number | undefined) {
+export function getTimestampFormattedDate(date: number | undefined) {
   if (!date) return 'Data não inserida corretamente.';
 
   let newDate = new Date(Number(date));
